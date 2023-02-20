@@ -8,6 +8,7 @@
       .onImage
         img(src="https://i.pinimg.com/originals/ac/8f/32/ac8f32655930269b2ee6dd91a1082bd4.jpg")
       .onInfo
+        h5 關於我們
         p {{ info.content }}
         h5 聯絡我們
         p {{ info.description }}
