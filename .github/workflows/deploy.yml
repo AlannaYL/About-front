@@ -29,5 +29,7 @@ jobs:
         with:
           branch: gh-pages
           folder: dist/spa
+          clean: false
+          force: true
           clean-exclude: |
             .nojekyll
