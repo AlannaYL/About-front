@@ -2,7 +2,7 @@
 #AdminMember
   h4.text-center.col-12 會員管理
   .row.q-px-xl
-    .q-pa-md.items-center.col-md-4.col-xs-12(v-for="(user,i) in members" :key="i")
+    .q-pa-md.items-center.col-md-4.col-xs-12(v-for="(user,i) in filterMembers()" :key="i")
       q-card
         q-card-section(horizontal)
           q-img.q-ma-md(:src="`https://source.boringavatars.com/beam/${user.account}?colors=ffabab,ffdaab,ddffab,abe4ff,d9abff`" width="70px" height="70px")
@@ -33,6 +33,10 @@ const $q = useQuasar()
 const user = useUserStore()
 const { account, email } = storeToRefs(user)
 const members = reactive([])
+
+const filterMembers = () => {
+  return members.filter(item => item.role !== true)
+}
 
 const form = reactive({
   _id: '',

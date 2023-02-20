@@ -1,7 +1,7 @@
 
 <template lang="pug">
 #index
-  q-layout(view='hHr lpR fFr' rounded-borders)
+  q-layout(view='hHr lpR fFr' rounded-borders )
     q-header.bg-white.text-black(reveal)
       q-toolbar
         RouterLink#logo(to="/")
@@ -39,6 +39,7 @@ const showRegister = ref(false)
 const user = useUserStore()
 const { isLogin, isAdmin, ShowLogin, cart } = storeToRefs(user)
 const { logout } = user
+
 </script>
 
 <style lang="sass">

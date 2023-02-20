@@ -1,10 +1,15 @@
 <template lang="pug">
 #Section_01
-  swiper.height(:modules="modules" :spaceBetween="10" :slidesPerView="'auto'" )
+  swiper.height(:modules="modules" :spaceBetween="30" :slidesPerView="'auto'" )
     swiper-slide(v-for="i in filterView()")
       SwiperModal(v-bind="i")
-  q-btn.scorll-btn(outline color="pink" icon="fa-solid fa-arrow-down") list
+  q-btn.scorll-btn(@click="scrollToSection()" icon="fa-solid fa-arrow-down" outline color="pink" ) list
 #Section_02
+  .col-12
+    swiper.height(data-aos="fade-up" :modules="modules" :spaceBetween="40" :slidesPerView="'auto'" )
+      swiper-slide(v-for="i in filterCard()")
+        CardModel(v-bind="i")
+  #footer
 
 </template>
 <script setup>
@@ -13,29 +18,29 @@ import { api } from 'src/boot/axios'
 import { useQuasar } from 'quasar'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import SwiperModal from 'src/components/SwiperModal.vue'
+import CardModel from 'src/components/CardModel.vue'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 
 const $q = useQuasar()
-
-// const breakpoints = {
-//   slidesPerView: 1,
-//   spaceBetween: 10,
-//   600: {
-//     slidesPerView: 3,
-//     spaceBetween: 10
-//   },
-//   1024: {
-//     slidesPerView: 3,
-//     spaceBetween: 10
-//   }
-// }
 
 const exhibitions = reactive([])
 
 const filterView = () => {
   return exhibitions.filter(item => item.category === '展覽')
+}
+const filterCard = () => {
+  return exhibitions.filter(item => item.category !== '展覽')
+}
+
+const scrollToSection = () => {
+  AOS.init({
+    duration: 1300
+  })
+  document.getElementById('Section_02').scrollIntoView({ behavior: 'smooth' })
 }
 
 ;(async () => {

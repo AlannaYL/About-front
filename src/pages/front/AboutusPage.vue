@@ -5,10 +5,13 @@
     img(src="https://res.cloudinary.com/dhpu1tojv/image/upload/v1676604535/logo_2_nuvd66.svg")
   .about-info
     .row
-      .onImage.col-4
+      .onImage
         img(src="https://i.pinimg.com/originals/ac/8f/32/ac8f32655930269b2ee6dd91a1082bd4.jpg")
-      .onInfo.col-8
+      .onInfo
         p {{ info.content }}
+        h5 聯絡我們
+        p {{ info.description }}
+
 </template>
 <script setup>
 import { apiAuth } from 'src/boot/axios'

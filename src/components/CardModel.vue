@@ -1,12 +1,12 @@
 <template lang="pug">
 .card-section
-.card(style="height: 280px")
-  RouterLink.img(:to='"/Exhibitions/" + _id')
-    div.text-h5.text-left.content
-      p {{ title }}
-      p {{ place }}
-      p {{ new Date(from).toLocaleDateString() + '~' + new Date(to).toLocaleDateString() }}
-    img(:src="image")
+  .card(style="height: 280px")
+    RouterLink.img(:to='"/Exhibitions/" + _id')
+      div.text-h5.text-left.content
+        p {{ title }}
+        p.font-text {{ place }}
+        p.font-text {{ new Date(from).toLocaleDateString() + '~' + new Date(to).toLocaleDateString() }}
+      img(:src="image")
 
 </template>
 <script setup>

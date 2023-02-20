@@ -13,6 +13,12 @@
       swiper(:modules="modules" :spaceBetween="30" :slidesPerView="3")
         swiper-slide(v-for="i in filterCard()")
           CardModel(v-bind="i")
+    .col-12
+      h5 當期藝文
+    .col-12.q-my-lg
+      swiper(:modules="modules" :spaceBetween="30" :slidesPerView="3")
+        swiper-slide(v-for="i in filterInfo()")
+          CardModel(v-bind="i")
 
 </template>
 <script setup>
@@ -39,6 +45,10 @@ const filterView = () => {
 }
 const filterCard = () => {
   return exhibitions.filter(item => item.category === '活動')
+}
+
+const filterInfo = () => {
+  return exhibitions.filter(item => item.category === '藝文')
 }
 
 const user = useUserStore()
