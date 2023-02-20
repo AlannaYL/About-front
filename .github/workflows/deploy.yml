@@ -30,6 +30,6 @@ jobs:
           branch: gh-pages
           folder: dist/spa
           clean: false
-          force: true
-          clean-exclude: |
-            .nojekyll
+          # force: true
+          # clean-exclude: |
+          #   .nojekyll
