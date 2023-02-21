@@ -25,8 +25,8 @@ import 'swiper/css/pagination'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 
+AOS.init()
 const $q = useQuasar()
-
 const exhibitions = reactive([])
 
 const filterView = () => {
