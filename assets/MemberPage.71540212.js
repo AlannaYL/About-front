@@ -1,0 +1,1 @@
+import{m as s,q as o,s as e,_ as t}from"./index.051d81b0.js";const c={id:"memberinfo"},r=e("div",{class:"row items-center"},[e("div",{class:"col-12"},[e("h5",null,"\u8ACB\u9078\u64C7\u5DE6\u5074\u529F\u80FD")])],-1),a=[r];function n(i,d){return s(),o("div",c,a)}const _={};var m=t(_,[["render",n]]);export{m as default};
