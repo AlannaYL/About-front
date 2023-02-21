@@ -10,7 +10,7 @@
           img(:src="props.row.image" style="height: 100px")
       template(v-slot:body-cell-sell="props")
         q-td
-          q-icon.btn-size(:name="props.row.sell? 'fa-solid fa-face-smile': 'fa-solid fa-face-dizzy'")
+          q-icon.btn-size(:name="props.row.sell? 'fa-solid fa-shop': 'fa-solid fa-shop-slash'")
       template(v-slot:body-cell-edit="props")
         q-td
           q-btn(round @click="openAdd(filterData.findIndex(item => item._id === props.row._id ))" icon="fa-solid fa-pen-to-square")

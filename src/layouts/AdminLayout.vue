@@ -4,7 +4,9 @@
     q-drawer(show-if-above :width="240")
       q-scroll-area.fit.bg-color
         .row
-          .col-12.q-pa-xxl.text-center.column(v-for="link in links")
+          .col-12.q-pa-xxl.text-center.text-white
+            h5 管理員後台
+          .col-12.icon-style.q-pa-xxl.text-center.column(v-for="link in links")
             q-btn(:disable="link.to === route.path" :icon="link.icon" :to="link.to" flat rounded color="white") {{ link.text }}
     q-page-container
       q-page(padding)
@@ -21,8 +23,8 @@ const links = [
   { icon: 'fa-solid fa-rotate-left', text: '返回首頁', to: '/' },
   { icon: 'fa-solid fa-file-lines', text: '展覽管理', to: '/Admin' },
   { icon: 'fa-solid fa-users', text: '會員管理', to: '/Adminmembers' },
-  { icon: 'fa-solid fa-list', text: '訂單管理', to: '/orders' },
-  { icon: 'fa-regular fa-comment', text: '關於我們', to: '/Adminabout' }
+  { icon: 'fa-solid fa-list', text: '訂單資訊', to: '/orders' }
+  // { icon: 'fa-regular fa-comment', text: '關於我們', to: '/Adminabout' }
 ]
 
 const user = useUserStore()
@@ -34,3 +36,11 @@ const linksFiltered = computed(() => {
 
 const route = useRoute()
 </script>
+
+<style lang="sass">
+#AdminPage
+  .icon-style
+    i
+      margin-right: 12px
+
+</style>

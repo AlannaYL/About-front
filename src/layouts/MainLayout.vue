@@ -21,6 +21,8 @@
         router-view
     q-dialog(v-if="!isLogin" v-model="ShowLogin")
       q-card#card.row.items-end
+        .col-12.text-center
+          h6.h6-style {{ showRegister ? '會員註冊' : '會員登入' }}
         .col-12
           RegisterModal(v-if="showRegister")
           LoginModal(v-if="!showRegister")
@@ -43,10 +45,16 @@ const { logout } = user
 </script>
 
 <style lang="sass">
+.q-toolbar
+  padding: 10px 12px
 #logo
   width: 200px
   height: 50px
   img
     width: 100%
     object-fit: contain
+
+.h6-style
+  margin: 0
+  color: #F8A680
 </style>

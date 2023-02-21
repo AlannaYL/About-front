@@ -4,10 +4,11 @@
   .col-12
     q-table.item-center(grid :rows="loves" row-key="_id")
       template(v-slot:item="props")
-        div(class="col-xs-12 col-sm-6 col-md-4 q-pa-md")
+        div(class="col-xs-12 col-sm-6 col-md-3 q-pa-md")
           q-card
             q-card-section
-              img(:src="props.row.image" style="height: 100px")
+              img(:src="props.row.image" style="height: 200px; width: 300px; object-fit: cover")
+              br
               strong {{ props.row.title }}
               br
               strong {{ new Date(props.row.from).toLocaleDateString() + '-' + new Date(props.row.to).toLocaleDateString() }}

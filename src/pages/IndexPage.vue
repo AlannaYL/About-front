@@ -5,9 +5,13 @@
       SwiperModal(v-bind="i")
   q-btn.scorll-btn(@click="scrollToSection()" icon="fa-solid fa-arrow-down" outline color="pink" ) list
 #Section_02
-  .col-12
-    swiper.height(data-aos="fade-up" :modules="modules" :spaceBetween="40" :slidesPerView="'auto'" )
+  .col-12(data-aos="fade-up")
+    swiper(:modules="modules" :spaceBetween="40" :slidesPerView="'auto'" )
       swiper-slide(v-for="i in filterCard()")
+        CardModel(v-bind="i")
+  .col-12(data-aos="fade-up")
+    swiper(:modules="modules" :spaceBetween="40" :slidesPerView="'auto'" )
+      swiper-slide(v-for="i in filterinfo()")
         CardModel(v-bind="i")
   #footer
 
@@ -32,9 +36,11 @@ const filterView = () => {
   return exhibitions.filter(item => item.category === '展覽')
 }
 const filterCard = () => {
-  return exhibitions.filter(item => item.category !== '展覽')
+  return exhibitions.filter(item => item.category === '活動')
 }
-
+const filterinfo = () => {
+  return exhibitions.filter(item => item.category === '藝文')
+}
 const scrollToSection = () => {
   AOS.init({
     duration: 1300

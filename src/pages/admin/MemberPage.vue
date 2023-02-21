@@ -2,14 +2,13 @@
 #AdminMember
   h4.text-center.col-12 會員管理
   .row.q-px-xl
-    .q-pa-md.items-center.col-md-4.col-xs-12(v-for="(user,i) in filterMembers()" :key="i")
-      q-card
-        q-card-section(horizontal)
-          q-img.q-ma-md(:src="`https://source.boringavatars.com/beam/${user.account}?colors=ffabab,ffdaab,ddffab,abe4ff,d9abff`" width="70px" height="70px")
-          .column
-            .text-h5.col.q-my-md {{ user.account }}
-              .text-subtitle2 {{ user.email }}
-                q-btn.q-ma-md(icon="edit" round push color="blue" @click="editBtn(members.findIndex(item => item._id === user._id ))")
+    q-table.item-center(:rows="filterMembers()" :columns="columns" row-key="_id" style="width: 100%")
+      template(v-slot:body-cell-image="props")
+        q-td.text-center
+          img(:src="`https://source.boringavatars.com/beam/${props.row.account}?colors=ffabab,ffdaab,ddffab,abe4ff,d9abff`" style="width: 70px; height: 70px")
+      template(v-slot:body-cell-edit="props")
+        q-td.text-center
+          q-btn.q-ma-md(label="編輯" rounded push color="blue" @click="editBtn(members.findIndex(item => item._id === props.row._id ))")
   q-dialog(v-model="form.dialog")
     q-card(style="width: 90%")
       q-form(@submit="onSubmit")
@@ -33,6 +32,31 @@ const $q = useQuasar()
 const user = useUserStore()
 const { account, email } = storeToRefs(user)
 const members = reactive([])
+
+const columns = [
+  {
+    name: 'image',
+    label: 'Avatar',
+    align: 'center'
+  },
+  {
+    name: 'account',
+    label: '會員',
+    field: row => row.account,
+    align: 'center'
+  },
+  {
+    name: 'email',
+    label: '信箱',
+    field: row => row.email,
+    align: 'center'
+  },
+  {
+    name: 'edit',
+    label: '編輯',
+    align: 'center'
+  }
+]
 
 const filterMembers = () => {
   return members.filter(item => item.role !== true)

@@ -22,6 +22,7 @@
         q-card-section.col-12
           q-input(v-model.number="quantity" type="number" label="請選擇數量" :rules="[rules.required, rules.number]")
           q-btn.q-mt-lg(push color="pink" label="加入購物車" type="submit")
+  .footer
 </template>
 <script setup>
 import { ref, reactive } from 'vue'
@@ -130,3 +131,12 @@ const editLove = async () => {
   }
 })()
 </script>
+
+<style lang="sass">
+.footer
+  padding: 0 12px
+  min-height: 75px
+  width: 100%
+  background: #FAF1E8
+
+</style>
