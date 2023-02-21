@@ -13,7 +13,7 @@
 
 </template>
 <script setup>
-import { reactive } from 'vue'
+import { reactive, nextTick } from 'vue'
 import { api } from 'src/boot/axios'
 import { useQuasar } from 'quasar'
 import { Swiper, SwiperSlide } from 'swiper/vue'
@@ -25,7 +25,6 @@ import 'swiper/css/pagination'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 
-AOS.init()
 const $q = useQuasar()
 const exhibitions = reactive([])
 
@@ -46,6 +45,8 @@ const scrollToSection = () => {
 ;(async () => {
   try {
     const { data } = await api.get('/exhibitions')
+    await nextTick()
+    AOS.init()
     exhibitions.push(...data.result)
   } catch (error) {
     $q.notify({
